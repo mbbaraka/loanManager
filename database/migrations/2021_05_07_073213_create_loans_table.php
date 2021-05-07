@@ -14,7 +14,13 @@ class CreateLoansTable extends Migration
     public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
-            $table->id();
+            $table->string('client_id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
+            $table->string('id_number')->nullable();
+            $table->string('location')->nullable();
+            $table->string('occupation');
             $table->timestamps();
         });
     }
