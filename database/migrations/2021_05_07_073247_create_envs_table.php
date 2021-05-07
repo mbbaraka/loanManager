@@ -15,6 +15,9 @@ class CreateEnvsTable extends Migration
     {
         Schema::create('envs', function (Blueprint $table) {
             $table->id();
+            $table->string('company_name');
+            $table->string('phone');
+            $table->string('email');
             $table->timestamps();
         });
     }

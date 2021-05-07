@@ -12,7 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Loans Manager').' - '  }} @yield('title')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('loanTemplate/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -22,6 +22,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('loanTemplate/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('loanTemplate/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -43,6 +45,10 @@
                 @include('layouts.header')
                 <!-- End of Topbar -->
 
+                <!-- flash messages -->
+                <div class="container">
+                    @include('layouts.flashmessages')
+                </div>
                 <!-- Begin Page Content -->
                 @yield('content')
                 <!-- /.container-fluid -->
@@ -110,6 +116,13 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('loanTemplate/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('loanTemplate/js/demo/chart-pie-demo.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('loanTemplate/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('loanTemplate/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('loanTemplate/js/demo/datatables-demo.js') }}"></script>
 
 </body>
 

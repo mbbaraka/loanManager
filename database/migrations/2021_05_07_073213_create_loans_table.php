@@ -14,13 +14,16 @@ class CreateLoansTable extends Migration
     public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
+            $table->string('loan_id');
             $table->string('client_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone');
-            $table->string('id_number')->nullable();
-            $table->string('location')->nullable();
-            $table->string('occupation');
+            $table->string('amount');
+            $table->string('security');
+            $table->string('interest');
+            $table->string('period');
+            $table->string('guarantor_one_name')->nullable();
+            $table->string('guarantor_one_phone')->nullable();
+            $table->string('guarantor_two_name')->nullable();
+            $table->string('guarantor_two_phone')->nullable();
             $table->timestamps();
         });
     }

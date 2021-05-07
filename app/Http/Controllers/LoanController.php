@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Loan;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans = Loan::get();
+        return view('loans.index', compact('loans'));
     }
 
     /**
@@ -22,9 +24,9 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('loans.create', compact('id'));
     }
 
     /**
@@ -35,7 +37,29 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'amount' => 'required',
+            'interest' => 'required|max:10',
+            'guarantor_names'=> 'required',
+            'guarantor_phone'=> 'required'
+
+        ]);
+
+        $loan = new Loan();
+        $loan->loan_id = 'LN-'.rand(1000,9999);
+        $loan->client_id = $request->client_id;
+        $loan->amount = $request->amount;
+        $loan->interest = $request->interest;
+        $loan->security = $request->security;
+        $loan->period = $request->period;
+        $loan->guarantor_one_name = $request->guarantor_names;
+        $loan->guarantor_one_phone = $request->guarantor_phone;
+
+        $save = $loan->save();
+
+        if ($save) {
+            return redirect()->route('loans-index')->with('message', 'Successfully added loan');
+        }
     }
 
     /**

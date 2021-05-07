@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSmsTable extends Migration
+class AddTotalPaymentToLoansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sms', function (Blueprint $table) {
-            $table->id();
-            $table->string('client_id');
-            $table->string('message');
-            $table->timestamps();
+        Schema::table('loans', function (Blueprint $table) {
+            $table->string('payments')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sms');
+        Schema::table('loans', function (Blueprint $table) {
+            $table->dropColumn('payments');
+        });
     }
 }
