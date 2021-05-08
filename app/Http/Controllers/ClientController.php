@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use AfricasTalking\SDK\AfricasTalking;
 
 class ClientController extends Controller
 {
@@ -47,7 +48,7 @@ class ClientController extends Controller
         $client->client_id = 'ID-'.rand(1000,9999);
         $client->first_name = $request->first_name;
         $client->last_name = $request->last_name;
-        $client->phone = $request->phone;
+        $client->phone = "+256" . intval($request->phone);
         $client->location = $request->location;
         $client->occupation = $request->occupation;
         $client->id_number = $request->official_id;
@@ -55,6 +56,17 @@ class ClientController extends Controller
         $save = $client->save();
 
         if ($save) {
+
+            $message = "Hello ".$client->first_name.", you've successfully created an account with Canan Credits. \n You can now get a loan";
+
+            $AT       = new AfricasTalking(env('SMS_USERNAME'), env('SMS_API'));
+
+            $sms      = $AT->sms();
+            // Use the service
+            $result   = $sms->send([
+            'to'      => $client->phone,
+            'message' => $message,
+            ]);
             return redirect()->route('loans-create', $client->client_id)->with('message', 'Successfully added client');
         }
     }

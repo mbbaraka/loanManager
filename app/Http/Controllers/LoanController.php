@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Loan;
 use Illuminate\Http\Request;
+use AfricasTalking\SDK\AfricasTalking;
 
 class LoanController extends Controller
 {
@@ -26,7 +27,8 @@ class LoanController extends Controller
      */
     public function create($id)
     {
-        return view('loans.create', compact('id'));
+        $client = Client::where('client_id', $id)->first();
+        return view('loans.create', compact('id', 'client'));
     }
 
     /**
@@ -52,12 +54,26 @@ class LoanController extends Controller
         $loan->interest = $request->interest;
         $loan->security = $request->security;
         $loan->period = $request->period;
+        $loan->payments = $request->payment;
         $loan->guarantor_one_name = $request->guarantor_names;
         $loan->guarantor_one_phone = $request->guarantor_phone;
 
         $save = $loan->save();
 
         if ($save) {
+            //get client details
+            $client = Client::where('client_id', $request->client_id)->first();
+
+            $message = "You have secured a loan of UGX ".number_format($request->amount)." from Canan Credits at an interest of 15% and the loan is to be paid in ". $request->period . " days.\n Thank You!";
+
+            $AT       = new AfricasTalking(env('SMS_USERNAME'), env('SMS_API'));
+
+            $sms      = $AT->sms();
+            // Use the service
+            $result   = $sms->send([
+            'to'      => $client->phone,
+            'message' => $message,
+            ]);
             return redirect()->route('loans-index')->with('message', 'Successfully added loan');
         }
     }
@@ -102,8 +118,11 @@ class LoanController extends Controller
      * @param  \App\Models\Loan  $loan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Loan $loan)
+    public function delete($loan)
     {
-        //
+        $loans = Loan::where('loan_id', $loan)->first();
+        if ($loans->delete()) {
+            return redirect()->back()->with('message', 'Loan Details successfully deleted');
+        }
     }
 }

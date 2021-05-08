@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->prefix('/')->group(function () {
@@ -31,7 +31,7 @@ Route::middleware(['auth'])->prefix('/')->group(function () {
     Route::post('/loans/store', 'LoanController@store')->name('loan-store');
     Route::get('/loans/edit', 'ClientController@edit')->name('loans-edit');
     Route::get('/loans/update/{id}', 'ClientController@update')->name('loans-update');
-    Route::get('/loans/delete/{id}', 'ClientController@destroy')->name('loans-destroy');
+    Route::get('/loans/delete/{id}', 'LoanController@delete')->name('loans-destroy');
 
     //clients
     Route::get('/clients/new', 'ClientController@create')->name('clients-new');
@@ -40,5 +40,8 @@ Route::middleware(['auth'])->prefix('/')->group(function () {
     // Route::get('/clients/new', 'ClientController@index')->name('clients-new');
 
 
-
+    //payments
+    Route::get('/payments', 'PaymentController@index')->name('payments-index');
+    Route::get('/payments/{client}/{loan}', 'PaymentController@create')->name('make-payment');
+    Route::post('/payment/store', 'PaymentController@store')->name('payment-store');
 });

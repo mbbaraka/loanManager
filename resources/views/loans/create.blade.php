@@ -17,7 +17,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Processing a New Loan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Processing a New Loan for {{ $client->first_name. ' ' .$client->last_name }}</h6>
         </div>
         <div class="card-body">
             <form class="user" method="POST" action="{{ route('loan-store') }}">
@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="">Payment</label>
                             <input readonly type="number" class="form-control" id="payment"
-                                placeholder="Enter Interest Rate..." name="payment" value="" required autocomplete="interest">
+                        placeholder="Interest Rate" name="payment" value="" required autocomplete="interest">
 
                         </div>
                     </div>

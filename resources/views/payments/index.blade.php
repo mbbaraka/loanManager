@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Loans')
+@section('title', 'Payments')
 
 @section('content')
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Loans</h1>
+        <h1 class="h3 mb-0 text-gray-800">Payments</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 
@@ -104,11 +104,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Loans Table</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Payments Table</h6>
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#" role="button" id="dropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Process New Loan
+                    Process New Payment
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                     aria-labelledby="dropdownMenuLink">
@@ -126,7 +126,7 @@
                             <th>Amount Taken</th>
                             <th>Balance</th>
                             <th>Loan Period</th>
-                            <th>Start date</th>
+                            <th>Date Last Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -136,7 +136,7 @@
                             <th>Amount Taken</th>
                             <th>Balance</th>
                             <th>Loan Period</th>
-                            <th>Date Taken</th>
+                            <th>Date Last Payment</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -152,19 +152,38 @@
                                     {{ number_format($loan->amount) }}
                                 @endif
                             </td>
-                            <td>{{ $loan->period }}</td>
-                            <td>{{ date('d M, Y', strtotime($loan->created_at)) }}</td>
+                            <td>
+                                @if (((intval($loan->period))/30) == 1)
+                                    {{((intval($loan->period))/30)." month"}}
+                                @elseif(((intval($loan->period))/30) > 1)
+                                    {{((intval($loan->period))/30)." months"}}
+                                @elseif ($loan->period == 7)
+                                    {{ "one week" }}
+                                @elseif ($loan->period == 14)
+                                    {{ "two weeks" }}
+                                @endif
+                                <br>
+                                @if ((Carbon\Carbon::now()->subDays(intval($loan->period))) > $loan->created_at)
+                                    <small class="text-danger">Loan period overdue</small>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($loan->payment->last() != NULL)
+                                    {{ date('d M, Y', strtotime($loan->payment->last()->created_at)) }}
+                                @else
+                                    {{ date('d M, Y', strtotime($loan->created_at)) }}
+                                @endif
+                            </td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-eye"></i></button>
-                                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                    <button data-toggle="modal" data-target="#delete{{ $loan->loan_id }}" type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i></button>
+                                    <button type="button" title="View Loan Details" class="btn btn-outline-primary"><i class="fa fa-eye"></i></button>
+                                    <a href="{{ route('make-payment', [$loan->client_id, $loan->loan_id]) }}" title="Make Payment Now" class="btn btn-outline-primary"><i class="fab fa-cc-amazon-pay"></i></a>
                                 </div>
                             </td>
                         </tr>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="delete{{ $loan->loan_id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        {{-- <div class="modal fade" id="delete{{ $loan->loan_id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -182,7 +201,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         @endforeach
                     </tbody>
                 </table>
