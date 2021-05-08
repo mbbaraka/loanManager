@@ -1,6 +1,7 @@
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-## About LoanManager
+## About Loan Manager
 
 This is basically a Loan Management System built with laravel 7. Clients can be registered, given loans and payments made by clients recorded.
 On every transaction, the cliet receives an sms. 
@@ -8,9 +9,10 @@ The system also automatically sends sms to clients whose payment dates are due o
 
 LoanManager is very easy to use with a very nice interface deisgned by [Start Bootstrap](https://startbootstrap.com/theme/sb-admin-2).
 
-## Screenshorts
+## Screenshots
 ![Screenshot from 2021-05-08 16-18-13](https://user-images.githubusercontent.com/40891762/117547184-eca6a980-b036-11eb-86d9-ad8e9deef41a.png)
-
+![Screenshot_20210508-161846](https://user-images.githubusercontent.com/40891762/117547474-73a85180-b038-11eb-9dab-2ae12a8bfbe7.png)
+![Screenshot from 2021-05-08 16-18-01](https://user-images.githubusercontent.com/40891762/117547507-9aff1e80-b038-11eb-982e-f00e593e1693.png)
 
 
 ## Contributing
