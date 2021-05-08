@@ -74,7 +74,7 @@
         SMS Management
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('sms-index') }}">
             <i class="fas fa-fw fa-inbox"></i>
             <span>SMS</span></a>
     </li>
@@ -92,8 +92,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">System Settings</a>
-                <a class="collapse-item" href="register.html">User Profile Setting</a>
+                <a class="collapse-item" href="{{ route('home') }}">System Settings</a>
+                <a class="collapse-item" href="{{ route('home') }}">User Profile Setting</a>
             </div>
         </div>
     </li>

@@ -14,7 +14,7 @@ class SmsController extends Controller
      */
     public function index()
     {
-        //
+        return view('sms.create');
     }
 
     /**

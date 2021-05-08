@@ -44,4 +44,8 @@ Route::middleware(['auth'])->prefix('/')->group(function () {
     Route::get('/payments', 'PaymentController@index')->name('payments-index');
     Route::get('/payments/{client}/{loan}', 'PaymentController@create')->name('make-payment');
     Route::post('/payment/store', 'PaymentController@store')->name('payment-store');
+
+    //sms
+    Route::get('sms', 'SmsController@index')->name('sms-index');
+    Route::post('sms/store', 'SmsController@store')->name('sms-store');
 });
