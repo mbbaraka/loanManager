@@ -8,6 +8,9 @@ The system also automatically sends sms to clients whose payment dates are due o
 
 LoanManager is very easy to use with a very nice interface deisgned by [Start Bootstrap](https://startbootstrap.com/theme/sb-admin-2).
 
+## Screenshorts
+
+
 ## Contributing
 
 Thank you for considering contributing to the Loan Manager! Just Pull the repo.
@@ -15,7 +18,7 @@ Thank you for considering contributing to the Loan Manager! Just Pull the repo.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Baraka Mark Bright via [markbrightbaraka@gmail.com](mailto:markbrightbaraka@gmail.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Baraka Mark Bright via (mailto:markbrightbaraka@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## Credits
 Bootstrap
@@ -25,11 +28,14 @@ Stack Overflow community
 Africa Talking (For SMS)
 
 ## Sponsor
-You can buy me a cup of coffee via MTN MOMO +256773034311 or via paypal markbrightbaraka@gmail.com [markbrightbaraka@gmail.com]
+You can buy me a cup of coffee via MTN MOMO +256773034311 or via paypal markbrightbaraka@gmail.com
 
 ## Customisation
-For any customisation on this project please feel free to contact me via markbrightbaraka@gmail.com [markbrightbaraka@gmail.com]
+For any customisation on this project please feel free to contact me via markbrightbaraka@gmail.com
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Loan Manager![Screenshot_20210508-021517](https://user-images.githubusercontent.com/40891762/117541413-6d0be100-b01c-11eb-9638-01c972e6e61a.png)
+![Screenshot_20210508-021534](https://user-images.githubusercontent.com/40891762/117541414-6f6e3b00-b01c-11eb-94af-b699d885bf88.png)
+![Screenshot_20210508-161846](https://user-images.githubusercontent.com/40891762/117541416-709f6800-b01c-11eb-972c-1d6d476f2429.png)
+ is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
