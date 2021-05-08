@@ -9,6 +9,8 @@ The system also automatically sends sms to clients whose payment dates are due o
 LoanManager is very easy to use with a very nice interface deisgned by [Start Bootstrap](https://startbootstrap.com/theme/sb-admin-2).
 
 ## Screenshorts
+![Screenshot from 2021-05-08 16-18-13](https://user-images.githubusercontent.com/40891762/117547184-eca6a980-b036-11eb-86d9-ad8e9deef41a.png)
+
 
 
 ## Contributing
