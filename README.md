@@ -22,11 +22,11 @@ Thank you for considering contributing to the Loan Manager! Just Pull the repo.
 If you discover a security vulnerability within Laravel, please send an e-mail to Baraka Mark Bright via [markbrightbaraka@gmail.com] (mailto:markbrightbaraka@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## Credits
-Bootstrap
-StartBootstrap
-Laravel
-Stack Overflow community
-Africa Talking (For SMS)
+* Bootstrap
+* StartBootstrap
+* Laravel
+* Stack Overflow community
+* Africa Talking (For SMS)
 
 ## Sponsor
 You can buy me a cup of coffee via MTN MOMO +256773034311 or via paypal [markbrightbaraka@gmail.com](markbrightbaraka@gmail.com)
