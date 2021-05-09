@@ -19,7 +19,7 @@ Thank you for considering contributing to the Loan Manager! Just Pull the repo.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Baraka Mark Bright via [markbrightbaraka@gmail.com] (mailto:markbrightbaraka@gmail.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Loan Manager, please send an e-mail to Baraka Mark Bright via [markbrightbaraka@gmail.com] (mailto:markbrightbaraka@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## Credits
 * Bootstrap
